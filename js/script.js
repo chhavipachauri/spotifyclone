@@ -12,7 +12,7 @@ let onlySongHttpArray = [];
 
 //async function return promise isliye jnha display krwana h udhr b async and await use hoga
 async function getSongs() {
-    let a = await fetch("https://chhavipachauri.github.io/spotifyclone.github.io/songs/")
+    let a = await fetch("/songs/")
     let response = await a.text();
     // console.log(response);  //will print the whole html code having song names 
     let div = document.createElement("div")  //ye create kyu kiya
