@@ -12,7 +12,7 @@ let onlySongHttpArray = [];
 
 //async function return promise isliye jnha display krwana h udhr b async and await use hoga
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch("https://chhavipachauri.github.io/spotifyclone.github.io/songs/")
     let response = await a.text();
     // console.log(response);  //will print the whole html code having song names 
     let div = document.createElement("div")  //ye create kyu kiya
@@ -127,7 +127,7 @@ async function main() {
 
         document.querySelector(".songTime").innerHTML = `${formattedTime} / ${formattedDuration}`;
         document.querySelector(".circle").style.left = ((currentSong.currentTime / currentSong.duration) * 100) + '%';
-        if(formattedTime==formattedDuration){
+        if (formattedTime == formattedDuration) {
             play.src = "./img/pause.svg"
         }
     })
@@ -147,7 +147,7 @@ async function main() {
     document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-110%";
     })
-//add event listener to previous and next button
+    //add event listener to previous and next button
     previous.addEventListener("click", () => {
         console.log("previous clicked");
         let indexOfPrevClick;
@@ -206,24 +206,24 @@ async function main() {
     })
 
     //add an event to volume
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
-        console.log("Setting volume to: ",e.target.value,"/100");
-        currentSong.volume = parseInt(e.target.value)/100
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+        console.log("Setting volume to: ", e.target.value, "/100");
+        currentSong.volume = parseInt(e.target.value) / 100
     })
 
     //add an event to mute the volume
-    document.querySelector(".volume>img").addEventListener("click",e=>{
-        if(e.target.src.includes("volume.svg")){
-            e.target.src = e.target.src.replace("volume.svg","mute.svg")
+    document.querySelector(".volume>img").addEventListener("click", e => {
+        if (e.target.src.includes("volume.svg")) {
+            e.target.src = e.target.src.replace("volume.svg", "mute.svg")
             currentSong.volume = 0;
-            document.querySelector(".range").getElementsByTagName("input")[0].value=0;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
         }
-        else{
-            e.target.src = e.target.src.replace("mute.svg","volume.svg")
+        else {
+            e.target.src = e.target.src.replace("mute.svg", "volume.svg")
             currentSong.volume = 0.1;
-            document.querySelector(".range").getElementsByTagName("input")[0].value=10;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
         }
-        
+
     })
 }
 main();
